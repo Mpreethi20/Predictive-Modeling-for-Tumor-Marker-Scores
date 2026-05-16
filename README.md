@@ -1,17 +1,14 @@
-# Predictive-Modeling-for-Tumor-Marker-Scores
-Predicting CEA and CA27-29 tumor marker scores from vocal and speech patterns using Gradient Boosting, BERT, and GPT-3 feature engineering. Compares baseline vs. LLM-enhanced models on clinical storyline session data.
-Project Overview
-This project develops predictive models to estimate tumor marker scores (CEA and CA27-29) based on vocal and speech patterns recorded during storyline sessions. Advanced language models (BERT and GPT-3) were used to engineer additional features from participants' text responses to enhance predictive performance.
+Predictive-Modeling-for-Tumor-Marker-Scores
+Project Overview: This project develops predictive models to estimate tumor marker scores (CEA and CA27-29) based on vocal and speech patterns recorded during storyline sessions. Advanced language models (BERT and GPT-3) were used to engineer additional features from participants' text responses to enhance predictive performance.
 
-📂 Dataset
-FileDescriptiondf_storyline_data.csvAssessment IDs, session dates, facial/speech/vocal pattern datadf_tumormarker_data.csvClinical tumor marker test results (CEA & CA27-29 scores, test dates)
+Dataset: FileDescriptiondf_storyline_data.csvAssessment IDs, session dates, facial/speech/vocal pattern datadf_tumormarker_data.csvClinical tumor marker test results (CEA & CA27-29 scores, test dates)
+
 Key Data Characteristics
 Storyline sessions: Collected every 2 days
 Tumor marker scores: Recorded once a week
 Storyline data was aggregated weekly to align with tumor marker test frequency
 
-⚙️ Feature Engineering
-Language Model Features
+Feature Engineering: Language Model Features
 Two LLMs were used to extract meaningful features from text responses:
 GPT-3 (via LangChain)
 
@@ -20,17 +17,15 @@ Topic Modeling → category and topic scores
 Emotion Detection → anger, joy, fear scores
 
 BERT
-
 Contextual semantic features from speech transcripts
 Emotion and sentiment embeddings
 
-Example Features
+Example Features:
 
 wnlu_category_1_score — presence of specific categories from LLM analysis
 mfcc_sma_13_percentile1_0 — 13th Mel-Frequency Cepstral Coefficient (timbral audio feature)
 
-
-🤖 Modeling Approach
+Modeling Approach
 Primary Model: Gradient Boosting
 
 Chosen for its ability to handle complex feature interactions
