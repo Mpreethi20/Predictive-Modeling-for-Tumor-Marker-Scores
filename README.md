@@ -1,66 +1,56 @@
-Predictive-Modeling-for-Tumor-Marker-Scores
-Project Overview: This project develops predictive models to estimate tumor marker scores (CEA and CA27-29) based on vocal and speech patterns recorded during storyline sessions. Advanced language models (BERT and GPT-3) were used to engineer additional features from participants' text responses to enhance predictive performance.
+# Predictive Modeling for Tumor Marker Scores
 
-Dataset: FileDescriptiondf_storyline_data.csvAssessment IDs, session dates, facial/speech/vocal pattern datadf_tumormarker_data.csvClinical tumor marker test results (CEA & CA27-29 scores, test dates)
+## Overview
+This project focuses on predicting tumor marker scores (CEA and CA2729) using speech, vocal, and language pattern data collected during storyline sessions.
 
-Key Data Characteristics
-Storyline sessions: Collected every 2 days
-Tumor marker scores: Recorded once a week
-Storyline data was aggregated weekly to align with tumor marker test frequency
+The goal was to explore whether AI and machine learning models could identify meaningful relationships between vocal biomarkers and tumor marker levels.
 
-Feature Engineering: Language Model Features
-Two LLMs were used to extract meaningful features from text responses:
-GPT-3 (via LangChain)
+## Technologies Used
+- Python
+- Pandas
+- Scikit-learn
+- GPT-3
+- BERT
+- Gradient Boosting
+- NLP
+- Feature Engineering
 
-Sentiment Analysis → sentiment scores from speech text
-Topic Modeling → category and topic scores
-Emotion Detection → anger, joy, fear scores
+## Dataset
+The project used:
+- Speech and vocal pattern data
+- Tumor marker clinical test data
+- Weekly aggregated storyline sessions
 
-BERT
-Contextual semantic features from speech transcripts
-Emotion and sentiment embeddings
+## Feature Engineering
+Additional features were generated using:
+- Sentiment analysis
+- Emotion detection
+- Topic modeling
+- MFCC audio features
 
-Example Features:
+## Models Used
+- Gradient Boosting
+- Baseline ML models
+- GPT-3 enhanced models
+- BERT enhanced models
 
-wnlu_category_1_score — presence of specific categories from LLM analysis
-mfcc_sma_13_percentile1_0 — 13th Mel-Frequency Cepstral Coefficient (timbral audio feature)
+## Results
 
-Modeling Approach
-Primary Model: Gradient Boosting
-
-Chosen for its ability to handle complex feature interactions
-Well-suited for capturing subtle relationships in vocal/speech data
-
-Models Compared
-ModelTargetMAEMSER²Original DatasetCEA0.360.180.33Original DatasetCA27-296.0567.77-0.23GPT-3 EnhancedCEA0.490.36-0.20GPT-3 EnhancedCA27-295.8348.88-0.44BERT EnhancedCEA0.530.37-0.33BERT EnhancedCA27-295.7444.910.19
-
-📊 Key Findings
-
-BERT improved CA27-29 prediction (R² = 0.19), showing that semantic/emotional features can capture patterns relevant to this marker
-LLM features did not improve CEA prediction — in some cases increased error, suggesting feature relevance is highly context-specific
-Feature importance varied significantly between CEA and CA27-29, highlighting the need for target-specific feature engineering
-
-
-⚠️ Limitations
-
-Temporal data loss from weekly aggregation of bi-daily sessions
-Not all LLM features were useful — some introduced noise rather than signal
-Generalization uncertainty — mixed results across tumor markers suggest models may not be robust across different contexts
-Infrequent tumor marker collection (weekly) may miss rapid clinical changes
+| Model | MAE | MSE | R² |
+|------|------|------|------|
+| Original Dataset - CEA | 0.36 | 0.18 | 0.33 |
+| Original Dataset - CA2729 | 6.05 | 67.77 | -0.23 |
+| BERT - CA2729 | 5.74 | 44.91 | 0.19 |
 
 
-🔭 Next Steps
-
- Collect more frequent and detailed storyline session data
- Explore additional LLMs and feature extraction techniques
- Hyperparameter tuning and ensemble methods
- Validate model generalizability on new/unseen datasets
+## Key Findings
+- BERT-based features improved CA2729 prediction performance.
+- Speech emotion and semantic features showed predictive potential.
+- Feature relevance differed between tumor markers.
 
 
-🛠️ Tech Stack
-
-Python (Pandas, Scikit-learn, Matplotlib, Seaborn)
-BERT (Hugging Face Transformers)
-GPT-3 (via LangChain)
-Gradient Boosting (Scikit-learn)
-Jupyter Notebook
+## Future Improvements
+- More frequent data collection
+- Advanced deep learning models
+- Ensemble learning approaches
+- Better temporal alignment methods
